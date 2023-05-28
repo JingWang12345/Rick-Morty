@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Character } from '../model/Character';
+import { Character } from '../model/character';
 import { CharacterService } from '../service/character.service';
 
 
@@ -9,7 +9,7 @@ import { CharacterService } from '../service/character.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-
+page:number=1;
 
   characters: Character[] = [];
 
@@ -19,7 +19,7 @@ export class HomePageComponent {
 
   loadCharacters() {
 
-    this.characterServ.getCharacters().subscribe({
+    this.characterServ.getCharacters(this.page).subscribe({
       next: chars => {
         console.log(chars);
 
@@ -28,5 +28,17 @@ export class HomePageComponent {
       error: err => console.log(err)
 
     })
+  }
+  pageUp(){
+    this.page++;
+    this.loadCharacters()
+  }
+
+  pageDown(){
+    this.page--;
+    if (this.page<1) {
+      this.page=1
+    }
+    this.loadCharacters()
   }
 }

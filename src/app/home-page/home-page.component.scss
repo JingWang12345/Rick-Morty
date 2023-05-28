@@ -1,0 +1,22 @@
+header{
+  border: 2px solid black;
+  font-size: xx-large;
+
+  height:100px;
+}
+
+
+.card{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.name:hover{
+  color: rgb(238, 135, 62);
+}
+
+footer{
+
+  height: 100px;
+}
